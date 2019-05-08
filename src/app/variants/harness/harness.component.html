@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Create a Variant </h1>
+
+  <div>
+    <label for="myListOptions">Select the component to dynamically create:</label>
+    <select (ngModelChange)="selectChange($event)" [(ngModel)]="oneOption">
+      <option *ngFor="let oneOption of panelCollection" [ngValue]="oneOption">{{ oneOption.name }}
+      </option>
+    </select>
+  </div>
+</div>
+{{bunchOfOutputs}}
+  <div>
+    <ng-template class="container" #dynamic></ng-template>
+  </div>
