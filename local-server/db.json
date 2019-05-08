@@ -1,0 +1,29 @@
+{
+  "panelConfigs": [
+    {
+      "id": 1,
+      "name": "readOnly",
+      "title": "Information Component",
+      "summary": "This is a read-only component, used to display information",
+      "icon": "home",
+      "content": "This panel does not have any expand behavior, it is a place holder for information - can be other components"
+    },
+    {
+      "id": 2,
+      "name": "expander",
+      "title": "Expansion Component",
+      "summary": "This is a expander component, hide and show functionality",
+      "icon": "expand_more",
+      "content": "This panel does will have expand/collapse behavior",
+      "outputs": ["testString"]
+    },
+    {
+      "id": 3,
+      "name": "modal",
+      "title": "Modal Component",
+      "summary": "This is a modal component, modal functionality",
+      "icon": "open_in_new",
+      "content": "This panel will have modal behavior"
+    }
+  ]
+}
