@@ -14,7 +14,7 @@
       "title": "Expansion Component",
       "summary": "This is a expander component, hide and show functionality",
       "icon": "expand_more",
-      "content": "This panel does will have expand/collapse behavior",
+      "content": "This panel will have expand/collapse behavior",
       "outputs": ["testString"]
     },
     {
