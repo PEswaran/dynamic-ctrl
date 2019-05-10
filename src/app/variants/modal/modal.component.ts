@@ -1,43 +1,49 @@
-import { Component, OnInit, ComponentRef, ViewChild, ViewContainerRef } from '@angular/core';
-import { MatDialog } from '@angular/material';
-import { VariantBuilderService } from '../../variant-builder.service';
-import { DetailComponent } from '../detail/detail.component';
+import { Component, OnInit, Input, ViewContainerRef } from "@angular/core";
+import { MatDialog } from "@angular/material";
+import { VariantBuilderService } from "../../variant-builder.service";
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['../common.scss']
+  selector: "app-modal",
+  templateUrl: "./modal.component.html",
+  styleUrls: ["../common.scss"]
 })
 export class ModalComponent implements OnInit {
+  @Input() title: string;
+  @Input() summary: string;
+  @Input() content: string;
+  @Input() icon: string;
+  private ref;
+  constructor(
+    private svc: VariantBuilderService,
+    public dialog: MatDialog,
+    public viewContainerRef: ViewContainerRef
+  ) {}
 
-  @ViewChild('details', {
-    read: ViewContainerRef
-  })
-  viewContainerRef: ViewContainerRef;
-  componentRef: any;
-  contentData = 'sample';
-  oldValue;
+  ngOnInit() {}
 
-  constructor(private svc: VariantBuilderService, public dialog: MatDialog) { }
-
-  ngOnInit() {
-    this.oldValue = this.contentData;
-  }
+  /* openDetails() {
+    const comp = this.svc.providerMapToComponent("detail");
+    let config = new MatDialog();
+    config.viewContainerRef = this.viewContainerRef;
+    const dialogRef  = this.dialog.open(comp, config);
+    dialogRef.componentInstance.images = "BOO";
+    console.log(dialogRef);
+  }*/
 
   openDetails() {
-    // this.svc.setRootViewContainerRef(this.viewContainerRef);
-   // this.svc.createDetailComponent(DetailComponent, this.viewContainerRef);
-    console.log();
-    const dialogRef = this.dialog.open(DetailComponent, {
-    width: '100vw',
-    height: '100vh',
-    maxWidth: '100vw',
-      data: {title: 'CUSTOM DETAIL',
-      contentData : this.contentData }
+    const comp = this.svc.providerMapToComponent("detail");
+    console.log(comp.Object);
+    const dialogRef = this.dialog.open(comp, {
+      width: "80vw",
+      height: "80vh",
+      data: {
+        title: "blah"
+      }
     });
+    //dialogRef.componentInstance.input='blah';
+    console.log(dialogRef.componentInstance);
     dialogRef.afterClosed().subscribe(result => {
-      this.contentData = result;
+      console.log(result);
     });
   }
-  }
-
+}
