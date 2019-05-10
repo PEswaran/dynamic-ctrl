@@ -7,16 +7,26 @@ import { SharedMaterialModule } from '../shared-material.module';
 import { ExpanderComponent } from './expander/expander.component';
 import { ModalComponent } from './modal/modal.component';
 import { DetailComponent } from './detail/detail.component';
+import { DataFormComponent } from './data-form/data-form.component';
 
 @NgModule({
-  declarations: [ReadOnlyComponent, HarnessComponent, ExpanderComponent, ModalComponent, DetailComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-    SharedMaterialModule
+  declarations: [
+    ReadOnlyComponent,
+    HarnessComponent,
+    ExpanderComponent,
+    ModalComponent,
+    DetailComponent,
+    DataFormComponent
   ],
-  providers: [
-  ],
-  exports: [ReadOnlyComponent, HarnessComponent]
+  imports: [CommonModule, FormsModule, SharedMaterialModule],
+  entryComponents: [ModalComponent, DetailComponent, DataFormComponent],
+  exports: [
+    ReadOnlyComponent,
+    HarnessComponent,
+    ModalComponent,
+    DetailComponent,
+    DataFormComponent,
+    ExpanderComponent
+  ]
 })
-export class VariantsModule { }
+export class VariantsModule {}

@@ -14,7 +14,8 @@ import { ExpanderComponent } from './variants/expander/expander.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalComponent } from './variants/modal/modal.component';
 import { DetailComponent } from './variants/detail/detail.component';
-
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DataFormComponent } from './variants/data-form/data-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,12 +28,17 @@ import { DetailComponent } from './variants/detail/detail.component';
     HttpClientModule,
     LayoutModule,
     VariantsModule,
-    SharedMaterialModule
+    SharedMaterialModule,
+    MatDialogModule
   ],
   providers: [VariantBuilderService,
+    { provide: MatDialogRef, useValue: {}},
+    { provide: MAT_DIALOG_DATA, useValue: {}},
     { provide: 'readOnly', useValue: ReadOnlyComponent },
     { provide: 'expander', useValue: ExpanderComponent },
-    { provide: 'modal', useValue: ModalComponent }
+    { provide: 'modal', useValue: ModalComponent },
+    { provide: 'detail', useValue: DetailComponent },
+    { provide: 'dataForm', useValue: DataFormComponent }
   ],
   entryComponents: [ReadOnlyComponent, ExpanderComponent, ModalComponent, DetailComponent],
   bootstrap: [AppComponent]

@@ -23,6 +23,7 @@ export class HarnessComponent implements OnInit {
 
   public panelCollection: PanelModel[];
   private selectedPanel: PanelModel[];
+  componentRef: any;
 
   @ViewChild('dynamic', {
     read: ViewContainerRef
@@ -44,15 +45,9 @@ export class HarnessComponent implements OnInit {
 
   selectChange($event) {
     this.selectedPanel = $event;
-    const componentName = this.mapper.get($event.name, ReadOnlyComponent);
-    this.selectPanel(componentName, this.selectedPanel);
+    this.componentRef = this.svc.providerMapToComponent($event.name);
+ //   this.svc.setRootViewContainerRef(this.viewContainerRef);
+    this.svc.addDynamicComponent(this.componentRef,  $event, this.viewContainerRef);
   }
-
-  selectPanel(panelName, content) {
-    this.svc.setRootViewContainerRef(this.viewContainerRef);
-    this.svc.addDynamicComponent(panelName, content);
-
-  }
-
 
 }

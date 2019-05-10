@@ -1,21 +1,23 @@
 <mat-card>
-  <div class="detail-card">
-    <button mat-flat-button [mat-dialog-close]="data.contentData" cdkFocusInitial>
+  <div class="detail-card-header">
+    <button
+      mat-flat-button
+      [mat-dialog-close]="data.contentData"
+      cdkFocusInitial
+    >
       <mat-icon>chevron_left</mat-icon>
     </button>
- 
-  <mat-card-header>
-    <mat-card-title>{{title}} </mat-card-title>
-    <mat-card-subtitle>Summary </mat-card-subtitle>
-  </mat-card-header>
-</div>
+
+    <mat-card-header>
+      <mat-card-title>{{ title }} </mat-card-title>
+      <mat-card-subtitle>Summary </mat-card-subtitle>
+      {{ dataResult }}
+    </mat-card-header>
+  </div>
+
   <mat-card-content>
-    <p>{{ content }}</p>
-    <mat-form-field>
-      <mat-label>Change the {{content }} data</mat-label>
-      <input matInput [(ngModel)]="contentData">
-    </mat-form-field>
-    <button mat-button (click)="changeValues(contentData)">Commit Changes</button>
-  {{contentData}}
+    <h4>{{ content }}</h4>
+
+    <ng-template #formscontainer></ng-template>
   </mat-card-content>
 </mat-card>

@@ -1,2 +1,18 @@
-<app-nav-bar></app-nav-bar>
+<app-modal
+  title="Modal Component"
+  summary="This is a modal component, modal functionality"
+  icon="open_in_new"
+  content="This panel will have modal behavior"
+>
+</app-modal>
+
+<app-expander
+  title="Expansion Component"
+  summary="This is a expander component, hide and show functionality"
+  icon="expand_more"
+  content="This panel will have expand/collapse behavior"  
+  formTitle="Expansion Form Edits"
+  [formInputs]="['Content', 'SetFlow', 'E-Cord', 'Temp']"
+></app-expander>
+
 <router-outlet></router-outlet>

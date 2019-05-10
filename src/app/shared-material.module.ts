@@ -9,7 +9,8 @@ import {
    MatLineModule,
     MatButtonModule,
   MatInputModule,
-  MatFormFieldModule, MatDialogModule} from '@angular/material';
+  MatFormFieldModule, MatDialogModule,
+  MatRadioModule} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import {
     MatLineModule,
     MatInputModule,
     MatFormFieldModule,
-    MatDialogModule
+    MatDialogModule,
+    MatRadioModule
   ],
   exports: [
     MatToolbarModule,
@@ -33,7 +35,8 @@ import {
     MatLineModule,
     MatInputModule,
     MatFormFieldModule,
-    MatDialogModule
+    MatDialogModule,
+    MatRadioModule
   ]
 })
 export class SharedMaterialModule { }

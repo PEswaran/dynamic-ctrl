@@ -7,11 +7,11 @@
       <mat-icon class="mat-24">{{ icon }}</mat-icon>
     </button>
   </mat-card-header>
-
-  <mat-card-content *ngIf="expanded">
-    <p>
-      {{ content }}
-      <button (click)="exampleMethod($event)">Test me</button>
-    </p>
+  {{ formInfo | json }}
+  <h2 *ngIf="expanded">DYNAMIC FORM</h2>
+  <ng-template #dynamicFormsComponent> </ng-template> 
+  <mat-card-content *ngIf="expanded"> 
+      <p>{{ content }}</p>  
+ 
   </mat-card-content>
 </mat-card>

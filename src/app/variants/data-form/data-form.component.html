@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="logo">{{formTitle}}</div>
+    <div class="register-item">
+      <form #myform="ngForm" (ngSubmit)="register(myform)" class="form form-register">
+
+        <div class="form-field">
+              <label  class="user" for="text-content"><span>{{formField0}}</span></label>
+              <input name="content" id="text-content" ngModel>
+        </div>
+        <div class="form-field">
+            <label class="flow" for="flow"
+              ><span class="hidden">{{formField1}}</span></label
+            >
+            <input type="radio" class="radioLabel" name="flow" value="ON" ngModel />ON
+            <input type="radio" class="radioLabel"name="flow" value="OFF" ngModel />OFF
+          </div>
+          <div class="form-field">
+            <label class="ecord" for="ecord"
+              ><span class="hidden">{{formField2}}</span></label
+            >
+            <input type="radio" class="radioLabel" name="ecord-connect" value="ON" ngModel />ON
+            <input type="radio" class="radioLabel" name="ecord-connect" value="OFF" ngModel />OFF
+          </div>
+          <div class="form-field">
+            <label class="temperature" for="temperature">
+              <span class="hidden">{{formField3}}</span></label
+            >
+            <select name="temperature" value="x" ngModel>
+              <option *ngFor="let x of [0, 10, 20, 30, 40]"> {{ x }}</option>
+            </select>
+          </div>
+
+          <div class="form-button">
+            <input type="submit" value="Confirm" />
+            <input type="submit" value="Cancel" />
+          </div>
+         
+      </form>
+    </div>
+</div>
