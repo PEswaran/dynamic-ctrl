@@ -25,7 +25,8 @@ export class DetailComponent implements OnInit {
   formInputs = ["Content", "SetFlow", "E-Cord", "Temp"];
   private componentRef;
   constructor(
-    public builderSvc: VariantBuilderService
+    public builderSvc: VariantBuilderService,
+    private dialogRef: MatDialogRef<DetailComponent>
   ) {}
 
   ngOnInit() {
@@ -40,11 +41,10 @@ export class DetailComponent implements OnInit {
       "Modal Form Edit"
     );
 
-    // Handles output event, just emit your output here
+   // Handles output event, just emit your output here
     this.componentRef.instance.outputData.subscribe(data => {
     this.resultData.emit(data);
     });
-   
-
+    
   }
 }

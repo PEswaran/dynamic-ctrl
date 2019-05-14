@@ -4,21 +4,17 @@ import {
   Output,
   EventEmitter,
   Input,
-  Inject,
-  ViewChild,
   OnDestroy
-} from "@angular/core";
+} from '@angular/core';
 
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
-import { ModalComponent } from "../modal/modal.component";
+import { MatDialogRef } from '@angular/material';
 
-import { FormGroup, FormControl } from "@angular/forms";
-import { DataSet } from "src/app/Models/data-set";
+import { DataSet } from 'src/app/Models/data-set';
 
 @Component({
-  selector: "app-data-form",
-  templateUrl: "./data-form.component.html",
-  styleUrls: ["./data-form.component.scss"]
+  selector: 'app-data-form',
+  templateUrl: './data-form.component.html',
+  styleUrls: ['./data-form.component.scss']
 })
 export class DataFormComponent implements OnInit, OnDestroy {
   @Output() outputData: EventEmitter<any> = new EventEmitter<any>();
@@ -32,6 +28,7 @@ export class DataFormComponent implements OnInit, OnDestroy {
   popOut = false;
   datas;
   content;
+  params;
 
   model = new DataSet(
     this.formField0,
@@ -39,9 +36,10 @@ export class DataFormComponent implements OnInit, OnDestroy {
     this.formField2,
     this.formField3
   );
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   onSubmit() {
     this.outputData.emit(this.model);
@@ -52,7 +50,8 @@ export class DataFormComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.outputData.emit(this.model);
-   
+    //this.dialogRef.close(this.model);
   }
+
 
 }
