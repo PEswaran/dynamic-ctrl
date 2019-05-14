@@ -7,11 +7,10 @@
       <mat-icon class="mat-24">{{ icon }}</mat-icon>
     </button>
   </mat-card-header>
-  {{ formInfo | json }}
+  <pre>{{ formInfo }}</pre>
   <h2 *ngIf="expanded">DYNAMIC FORM</h2>
   <ng-template #dynamicFormsComponent> </ng-template> 
   <mat-card-content *ngIf="expanded"> 
-      <p>{{ content }}</p>  
- 
+      <p>{{ content }}</p>   
   </mat-card-content>
 </mat-card>

@@ -56,10 +56,10 @@ export class ExpanderComponent implements OnInit {
 
     // this._ref.instance.formField1 = 'Expansion_Data';
 
-    // Handles output event, just emit your output here
+    // Handles output event, just emit the output here
+    // To do: use models to pass data in and out.
     this.ref.instance.outputData.subscribe(data => {
-      this.formInfo = data;
-      console.log(data);
+      this.formInfo = JSON.stringify(data);     
     });
     }
 

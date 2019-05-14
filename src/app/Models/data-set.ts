@@ -1,9 +1,8 @@
-export interface DataSet {
-  id: number;
-  description: string;
-  iconUrl: string;
-  courseListIcon: string;
-  longDescription: string;
-  category: string;
-  lessonsCount: number;
+export class DataSet {
+  constructor(
+  public content: string,
+  public flow: string,
+  public ecord: string,
+  public temp: string
+) {  }
 }

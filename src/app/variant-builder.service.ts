@@ -43,11 +43,9 @@ export class VariantBuilderService {
     return componentRef;   
   }
 
-  subscribeToDynamicOutputs(componentRef){
+  subscribeToDynamicOutputs(componentRef) {
      // componentRef.instance.outputEvent.subscribe(val => console.log(val));
-   
-    return 
-     componentRef.instance.outputData.subscribe(val => console.log(val));
+    return  componentRef.instance.outputData.subscribe(val => console.log(val));
   }
 
 

@@ -1,6 +1,15 @@
-import { Component, OnInit, Input, ViewContainerRef } from "@angular/core";
-import { MatDialog } from "@angular/material";
+import {
+  Component,
+  OnInit,
+  Input,
+  ViewContainerRef,
+  ApplicationRef
+} from "@angular/core";
+import { MatDialog, MatDialogConfig, MatDialogRef } from "@angular/material";
 import { VariantBuilderService } from "../../variant-builder.service";
+import { Overlay } from "@angular/cdk/overlay";
+
+import { DataSet } from "src/app/Models/data-set";
 
 @Component({
   selector: "app-modal",
@@ -8,42 +17,38 @@ import { VariantBuilderService } from "../../variant-builder.service";
   styleUrls: ["../common.scss"]
 })
 export class ModalComponent implements OnInit {
+  componentRef: any;
+  formInfo: any;
   @Input() title: string;
   @Input() summary: string;
   @Input() content: string;
   @Input() icon: string;
-  private ref;
-  constructor(
-    private svc: VariantBuilderService,
-    public dialog: MatDialog,
-    public viewContainerRef: ViewContainerRef
-  ) {}
 
-  ngOnInit() {}
+  fileNameDialogRef: MatDialogRef<any>;
 
-  /* openDetails() {
-    const comp = this.svc.providerMapToComponent("detail");
-    let config = new MatDialog();
-    config.viewContainerRef = this.viewContainerRef;
-    const dialogRef  = this.dialog.open(comp, config);
-    dialogRef.componentInstance.images = "BOO";
-    console.log(dialogRef);
-  }*/
+  constructor(private svc: VariantBuilderService, private dialog: MatDialog) {}
 
   openDetails() {
-    const comp = this.svc.providerMapToComponent("detail");
-    console.log(comp.Object);
-    const dialogRef = this.dialog.open(comp, {
-      width: "80vw",
-      height: "80vh",
-      data: {
-        title: "blah"
+   
+    this.fileNameDialogRef = this.dialog.open(
+      this.svc.providerMapToComponent("detail"),  
+      {
+        height: '100%',
+        width: '80vw',    
       }
-    });
-    //dialogRef.componentInstance.input='blah';
-    console.log(dialogRef.componentInstance);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-    });
+    );
+
+    this.fileNameDialogRef.disableClose = true;
+   // this.fileNameDialogRef.autoFocus = true;
+    this.fileNameDialogRef.componentInstance.title = this.title;
+    this.fileNameDialogRef.componentInstance.summary = this.summary;
+
+    this.fileNameDialogRef.componentInstance.resultData.subscribe(
+      resultData => {
+        this.formInfo = JSON.stringify(resultData);
+      }
+    );
   }
+
+  ngOnInit() {}
 }
